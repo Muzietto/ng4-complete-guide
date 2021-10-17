@@ -13,6 +13,7 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { Recipe } from './recipes/recipe.model';
 import { BasicHighlightDirective } from './directives/basicHighlight/basicHighlight.directive';
 import { PunctuatedDirective } from './directives/punctuated/punctuated.directive';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PunctuatedDirective } from './directives/punctuated/punctuated.directiv
     ShoppingEditComponent,
     BasicHighlightDirective,
     PunctuatedDirective,
+    DropdownDirective,
   ],
   imports: [
     BrowserModule,
