@@ -14,6 +14,7 @@ import { Recipe } from './recipes/recipe.model';
 import { BasicHighlightDirective } from './directives/basicHighlight/basicHighlight.directive';
 import { PunctuatedDirective } from './directives/punctuated/punctuated.directive';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { LoggingService } from './shared/logging.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
     BrowserModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [LoggingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
