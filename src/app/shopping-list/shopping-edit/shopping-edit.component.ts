@@ -1,6 +1,6 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Ingredient } from '../../shared/ingredient.model';
-import { IngredientsService } from '../../shared/ingredients.service';
+import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -11,10 +11,13 @@ import { IngredientsService } from '../../shared/ingredients.service';
 export class ShoppingEditComponent implements OnInit {
   @ViewChild('nameInput', { static: false }) nameInputRef: ElementRef;
   @ViewChild('amountInput', { static: false }) amountInputRef: ElementRef;
+  chosenIngredient: Ingredient = ShoppingListService.nullIngredient;
 
-  constructor(private ingredientsService: IngredientsService) { }
+  constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit(): void {
+    this.shoppingListService
+    .subscribeToIngredientChosen((i: Ingredient) => { this.chosenIngredient = i; });
   }
 
   onAddItem() {
@@ -22,7 +25,17 @@ export class ShoppingEditComponent implements OnInit {
     const ingAmount = this.amountInputRef.nativeElement.value;
     const newIngredient = new Ingredient(ingName, ingAmount);
 
-    this.ingredientsService.onAddIngredient(newIngredient);
+    this.shoppingListService.addIngredient(newIngredient);
+    this.nameInputRef.nativeElement.value = '';
+    this.amountInputRef.nativeElement.value = '';
+  }
+
+  onDeleteItem() {
+    this.shoppingListService.removeIngredient(this.chosenIngredient);
+  }
+
+  onClear() {
+    this.shoppingListService.clearChosenIngredient();
   }
 
 }

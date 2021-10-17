@@ -9,6 +9,7 @@
                      type="text" 
                      id="name" 
                      class="form-control"
+                     [value]="chosenIngredient.name"
                      #nameInput>
                 </div>
                 <div class="col-sm-2 form-group">
@@ -17,6 +18,7 @@
                       type="text" 
                       id="amount" 
                       class="form-control"
+                      [value]="chosenIngredient.amount"
                       #amountInput>
                 </div>
             </div>
@@ -28,10 +30,12 @@
                       (click)="onAddItem()">Add</button>
                     <button 
                       class="btn btn-danger" 
-                      type="button">Delete</button>
+                      type="button" 
+                      (click)="onDeleteItem()">Delete</button>
                     <button 
                       class="btn btn-primary" 
-                      type="button">Clear</button>
+                      type="button" 
+                      (click)="onClear()">Clear</button>
                 </div>
             </div>
         </form>

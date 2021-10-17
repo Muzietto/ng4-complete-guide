@@ -16,5 +16,4 @@ export class HeaderComponent {
         this.featureSelected.emit(feature);
         this.logger.log(`A feature was selected: ${feature}`);
     }
-
 }
